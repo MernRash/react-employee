@@ -41,10 +41,12 @@ addData(e){
 addDetails(){
     // e.preventDefault();
     this.addData();
+    
 }
 
 
     render(){
+        const btn = this.state.newListItem === "" || this.state.department === "" || this.state.ratings === 0;
         return(
            <div className="App">
                <h1>EMPLOYEE FEEDBACK FORM</h1>
@@ -65,7 +67,7 @@ addDetails(){
                     <input type="number" value={this.state.ratings} max="10" placeholder="Enter Your Ratings" onChange={(e)=>this.addUserInput("ratings",e.target.value)} />{" "}
                 </label>
                 <br />
-                <button disabled={this.state.newListItem === "" || this.state.department === "" || this.state.ratings === 0} onClick={()=>this.addDetails()}>Submit</button>
+                <button disabled={btn} onClick={()=>this.addDetails()}>Submit</button>
 
             </div>
 
@@ -76,7 +78,6 @@ addDetails(){
                     return(
                        
                         <li key={item.id}>
-                             {console.log(item.newListItem   )}
                         Name: {item.value} | Department: {item.department} | Ratings: {item.ratings} 
                         </li>
                     );
